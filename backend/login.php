@@ -3,7 +3,7 @@ require "connection.php";
 
 
     $email    =  $_REQUEST['email'];
-    $username    =  $_REQUEST['email'];
+    $username    =  $_REQUEST['username'];
     $password = md5($_REQUEST['password']);
 
 

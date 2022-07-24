@@ -13,15 +13,18 @@ const passRegExp= RegExp(
 
 
 
-const registerReducer=(state={usernameError:'',emailError:'',passError:'',confirmPassError:''},action)=>{
+const registerReducer=(state={usernameError:'',emailError:'',passError:'',confirmPassError:'',username:''},action)=>{
 
     switch(action.type){
         
         case "username":
             if(action.username !=='' && usernameRegExp.test(action.username)){
-                return {...state,username:action.username, usernameError: null};
+                return {...state,
+                    username:action.username,
+                     usernameError: null};
             }else{
-                return{...state,usernameError: 'Username is invalid'}
+                return{...state,
+                    usernameError: 'Username is invalid'}
             }
         case "email":
             if(action.email !=='' && emailRegExp.test(action.email)){
@@ -45,6 +48,7 @@ const registerReducer=(state={usernameError:'',emailError:'',passError:'',confir
             if(state.usernameError == null && state.emailError == null && state.passError == null && state.confirmPassError == null) {
 
                 axios.post('http://localhost/login-redux/backend/register.php?username='+state.username+'&email='+state.email+'&password='+state.password)
+                window.location.href = "/";
  
             }else{
                 return console.log('error');
